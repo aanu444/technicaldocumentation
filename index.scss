@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+:root {
+  font-family: "Roboto", sans-serif;
+}
+
+$primaryColor: #ffcf96;
+$secondaryColor: #060535;
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+nav,
+main,
+div,
+section {
+  border: 0px solid #000;
+}
+
+body {
+  background-color: $primaryColor;
+  color: $secondaryColor;
+  font-size: 16px;
+}
+
+@mixin flex-wrap {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+@mixin flex-nowrap {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+#main-doc {
+  @include flex-nowrap;
+
+  #nav-bar {
+    flex-basis: 30%;
+    position: fixed;
+
+    h1 {
+      margin-left: 30px;
+    }
+
+    header {
+      height: 600px;
+      overflow: auto;
+
+      ul {
+        list-style-type: none;
+
+        li {
+          margin-top: 50px;
+
+          a {
+            text-decoration: none;
+            color: $secondaryColor;
+            font-weight: medium;
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+  }
+
+  .section-text {
+    flex-basis: 70%;
+    @include flex-wrap;
+    margin-left: 25%;
+    border-left: 3px solid grey;
+
+    .section-head {
+      flex-basis: 100%;
+
+      header {
+        h1 {
+          margin-left: 50px;
+          font-size: 1.5rem;
+        }
+      }
+
+      p {
+        margin-left: 50px;
+        text-align: justify;
+      }
+
+      ul {
+        li {
+          margin-left: 70px;
+          margin-top: 10px;
+          text-align: justify;
+        }
+      }
+
+      code {
+        display: block;
+        margin-left: 70px;
+        border: 1px solid #ffddb5;
+        padding: 10px;
+        background-color: #ffddb5;
+        border-radius: 3px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  #main-doc {
+    @include flex-wrap;
+    #nav-bar {
+      position: static;
+      flex-basis: 100%;
+
+      header {
+        height: 200px;
+
+        ul {
+          li {
+            margin-top: 30px;
+
+            a {
+              font-size: 0.9em;
+            }
+          }
+        }
+      }
+    }
+
+    .section-text {
+      flex-basis: 100%;
+      margin-left: 0;
+      border-left: 0px solid grey;
+
+      .section-head {
+        header {
+          h1 {
+            margin-left: 0px;
+            padding: 10px;
+          }
+        }
+
+        p {
+          margin-left: 0px;
+          padding: 10px;
+        }
+
+        ul {
+          li {
+            margin-left: 10px;
+            padding: 10px;
+          }
+        }
+
+        code {
+          margin-left: 10px;
+          padding: 10px;
+        }
+      }
+    }
+  }
+}
